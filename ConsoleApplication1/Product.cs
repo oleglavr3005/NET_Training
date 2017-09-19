@@ -1,7 +1,9 @@
-﻿using System;
+﻿using log4net;
+using System;
 
 public class Product : ICloneable, IComparable
 {
+    public static readonly ILog log = LogManager.GetLogger(typeof(Product));
     public string ProductName { get; set; }
     public string ProductId { get; set; }
     public int ProductCode { get; set; }
@@ -24,6 +26,7 @@ public class Product : ICloneable, IComparable
         ProductId = id;
         ProductCode = code;
         ProductPrice = price;
+        log.Info("Product " + name + " is created");
     }
 
     public override string ToString()
