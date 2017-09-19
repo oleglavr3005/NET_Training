@@ -28,7 +28,7 @@ public class Product : ICloneable, IComparable
 
     public override string ToString()
     {
-        return ProductName + "  " + ProductId;
+        return ProductName + "  " + ProductId+" "+ProductCode+" "+ProductPrice;
     }
 }
 
