@@ -16,10 +16,11 @@ namespace ConsoleApplication1
             log4net.Config.XmlConfigurator.Configure();
             log.Info("Entering application.");
             List<Product> products = new List<Product>()
-            { new Product("1", "1", 1013, 81.67m),
-             new Product("2", "2", 1017, 49.99m) ,
-            new Product("3", "3", 1015, 49.00m) }
+            { new Product("Prod1", 145445, 1013, 81.67m),
+             new Product("Prod2", 435435435, 1017, 49.99m) ,
+            new Product("Prod3", 354554, 1015, 49.00m) }
             ;
+            new EqualityComparer().Equals(new Product("Prod1", 145445, 1013, 81.67m), new Product("Prod2", 435435435, 1017, 49.99m));
             products.Sort();
             foreach (Product prod in products) Console.WriteLine(prod);
             Console.ReadLine();
