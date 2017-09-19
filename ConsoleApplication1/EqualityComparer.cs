@@ -39,7 +39,11 @@ namespace ConsoleApplication1
                     FieldInfo y_field = y.GetType().GetField(UseFieldForCheckEquals, BindingFlags.Public |
                                                   BindingFlags.NonPublic |
                                                   BindingFlags.Instance);
-                    if (!x_field.Equals(y_field))
+                    //        object ox = (ObjectType)Activator.CreateInstance(); oy = new object();
+                    Type type = x_field.GetType();
+              object  ox=  x_field.GetValue(x);
+                    object oy=y_field.GetValue(y);
+                    if (!ox.Equals(oy))
                     {
                         log.Info("false");
                         return false;
