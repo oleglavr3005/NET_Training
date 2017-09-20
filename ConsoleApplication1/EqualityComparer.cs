@@ -17,13 +17,13 @@ namespace ConsoleApplication1
             //if the same class get attributes values and check them for equals
             if (x == null || y == null || x.GetType() != y.GetType())
                 return false;
-            x.GetType().GetCustomAttributes(false);
+         //   x.GetType().GetCustomAttributes(false);
             UseForEqualityCheck MyAttribute =
            (UseForEqualityCheck)Attribute.GetCustomAttribute(x.GetType(), typeof(UseForEqualityCheck));
 
             if (MyAttribute == null)
             {
-                Console.WriteLine("The attribute was not found.");
+                log.Error("The attribute was not found.");
             }
             else
             {
@@ -40,8 +40,8 @@ namespace ConsoleApplication1
                                                   BindingFlags.Instance);
                     //        object ox = (ObjectType)Activator.CreateInstance(); oy = new object();
                     Type type = x_field.GetType();
-              object  ox=  x_field.GetValue(x);
-                    object oy=y_field.GetValue(y);
+                    object ox = x_field.GetValue(x);
+                    object oy = y_field.GetValue(y);
                     if (!ox.Equals(oy))
                     {
                         log.Info("false");
@@ -50,7 +50,7 @@ namespace ConsoleApplication1
                 }
 
             }
-          
+
             return true;
         }
 
