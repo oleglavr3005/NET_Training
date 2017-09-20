@@ -13,7 +13,8 @@ namespace ConsoleApplication1
         public string ProductName { get { return productName; } set { productName = value; }  }
         public int ProductId { get { return productId; } set { productId = value; } }
         public int ProductCode { get { return productCode; } set { productCode = value; } }
-        public decimal ProductPrice { get { return productPrice; } set { productPrice = value; } }
+        public decimal ProductPrice { get { return productPrice; } set { if (value > 0) productPrice = value;
+                else log.Warn("Incorrect price"); } }
 
         public object Clone()
         {

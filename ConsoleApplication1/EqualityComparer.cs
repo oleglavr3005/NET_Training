@@ -29,7 +29,6 @@ namespace ConsoleApplication1
             {
                 foreach (string UseFieldForCheckEquals in MyAttribute.FieldsForEqualityCheck)
                 {
-                    Console.WriteLine("Property is: {0}.", UseFieldForCheckEquals);
                     FieldInfo[] fi = x.GetType().GetFields(BindingFlags.Public |
                                                  BindingFlags.NonPublic |
                                                  BindingFlags.Instance);
