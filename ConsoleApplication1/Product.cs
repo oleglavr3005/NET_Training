@@ -10,6 +10,7 @@ namespace ConsoleApplication1
         private int productId;
         private int productCode;
         private decimal productPrice;
+        public string Company { get; set; }
         public string ProductName { get { return productName; } set { productName = value; }  }
         public int ProductId { get { return productId; } set { productId = value; } }
         public int ProductCode { get { return productCode; } set { productCode = value; } }

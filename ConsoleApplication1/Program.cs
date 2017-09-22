@@ -15,6 +15,15 @@ namespace ConsoleApplication1
         {
             log4net.Config.XmlConfigurator.Configure();
             log.Info("Start application.");
+
+            using (var ctx = new ProductsContext())
+            {
+                Product prod = new Product("Prod1", 145445, 1013, 81.67m);
+
+                ctx.Products.Add(prod);
+                ctx.SaveChanges();
+            }
+
             List<Product> products = new List<Product>()
             { new Product("Prod1", 145445, 1013, 81.67m),
              new Product("Prod2", 435435436, 1017, 49.99m) ,
@@ -27,7 +36,9 @@ namespace ConsoleApplication1
             products.Sort();
             foreach (Product prod in products) Console.WriteLine(prod);
             Console.ReadLine();
+
             log.Info("End application.");
+
         }
     }
 }
