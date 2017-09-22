@@ -27,6 +27,14 @@ namespace ConsoleApplication1
         {
             return ProductCode - ((Product)obj).ProductCode;
         }
+        public Product()
+        {
+            ProductName = "";
+            ProductId = 0;
+            ProductCode = 0;
+            ProductPrice = 0m;
+         //   log.Info("Product " + name + " is created");
+        }
 
         public Product(string name, int id, int code, decimal price)
         {

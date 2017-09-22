@@ -16,13 +16,7 @@ namespace ConsoleApplication1
             log4net.Config.XmlConfigurator.Configure();
             log.Info("Start application.");
 
-            using (var ctx = new ProductsContext())
-            {
-                Product prod = new Product("Prod1", 145445, 1013, 81.67m);
-
-                ctx.Products.Add(prod);
-                ctx.SaveChanges();
-            }
+            Product updProduct=null;
 
             List<Product> products = new List<Product>()
             { new Product("Prod1", 145445, 1013, 81.67m),
@@ -34,7 +28,31 @@ namespace ConsoleApplication1
             ;
             products= products.Distinct<Product>(new EqualityComparer()).ToList<Product>();
             products.Sort();
-            foreach (Product prod in products) Console.WriteLine(prod);
+            using (var ctx = new ProductsContext())
+            {
+                /*    foreach (Product prod in products)
+                    {
+                        Console.WriteLine(prod);
+                        ctx.Products.Add(prod);
+
+                    }
+                    */
+                updProduct= ctx.Products.Where(s => s.ProductId == 354554).FirstOrDefault<Product>();
+                if (updProduct != null)
+                    updProduct.ProductPrice = 59.00m;
+                ctx.SaveChanges();
+
+
+            }
+            using (var dbCtx = new ProductsContext())
+            {
+                //3. Mark entity as modified
+                dbCtx.Entry(updProduct).State = System.Data.Entity.EntityState.Modified;
+
+                //4. call SaveChanges
+                dbCtx.SaveChanges();
+            }
+
             Console.ReadLine();
 
             log.Info("End application.");
