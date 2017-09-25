@@ -36,7 +36,7 @@ namespace ConsoleApplication1
                     ctx.Products.Add(prod);
 
                 }
-                updProducts = ctx.Products.Where(s => s.ProductName == "Prod3").ToList<Product>();
+                updProducts = ctx.Products.Where(s => s.ProductCode == 1017).ToList<Product>();
                 foreach (Product product in updProducts)
                     product.ProductPrice = 99.00m;
                 ctx.SaveChanges();

@@ -82,6 +82,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="EqualityComparer.cs" />
+    <Compile Include="ProductsController.cs" />
     <Compile Include="UseForEqualityCheck.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
