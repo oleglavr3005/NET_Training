@@ -63,6 +63,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -71,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client.cs" />
     <Compile Include="Migrations\201709221150494_InitialCreate.cs" />
     <Compile Include="Migrations\201709221150494_InitialCreate.Designer.cs">
       <DependentUpon>201709221150494_InitialCreate.cs</DependentUpon>
@@ -79,7 +81,17 @@
     <Compile Include="Migrations\201709221419531_AddCompany.Designer.cs">
       <DependentUpon>201709221419531_AddCompany.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709261553175_AddNewEntities.cs" />
+    <Compile Include="Migrations\201709261553175_AddNewEntities.Designer.cs">
+      <DependentUpon>201709261553175_AddNewEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709261600218_AddOrdersKey.cs" />
+    <Compile Include="Migrations\201709261600218_AddOrdersKey.Designer.cs">
+      <DependentUpon>201709261600218_AddOrdersKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderDetails.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="EqualityComparer.cs" />
     <Compile Include="ProductsController.cs" />
@@ -111,6 +123,15 @@
     <EmbeddedResource Include="Migrations\201709221419531_AddCompany.resx">
       <DependentUpon>201709221419531_AddCompany.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261553175_AddNewEntities.resx">
+      <DependentUpon>201709261553175_AddNewEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709261600218_AddOrdersKey.resx">
+      <DependentUpon>201709261600218_AddOrdersKey.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

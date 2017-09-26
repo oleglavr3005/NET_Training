@@ -8,7 +8,7 @@ namespace ConsoleApplication1
 {
     class ProductsController
     {
-        public void Add(Product prod)
+        public void AddProduct(Product prod)
         {
             using (var ctx = new ProductsContext())
             {
@@ -25,7 +25,6 @@ namespace ConsoleApplication1
             {
                 product = ctx.Products.Where(s => s.ProductCode == code && s.ProductName.Equals(name)).FirstOrDefault<Product>();
                 return product;
-                ctx.SaveChanges();
             }
         }
 
