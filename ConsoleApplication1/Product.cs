@@ -1,9 +1,11 @@
 ﻿using log4net;
 using System;
+using System.Collections.Generic;
+
 namespace ConsoleApplication1
 {
     [UseForEqualityCheck("productName", "productId")]
-    public class Product : ICloneable, IComparable
+    class Product : ICloneable, IComparable
     {
         public static readonly ILog log = LogManager.GetLogger(typeof(Product));
         private string productName;
@@ -16,6 +18,8 @@ namespace ConsoleApplication1
         public int ProductCode { get { return productCode; } set { productCode = value; } }
         public decimal ProductPrice { get { return productPrice; } set { if (value > 0) productPrice = value;
                 else log.Warn("Incorrect price"); } }
+
+        public ICollection<OrderDetails> ListOrderDetails { get; set; }
 
         public object Clone()
         {
@@ -36,12 +40,13 @@ namespace ConsoleApplication1
          //   log.Info("Product " + name + " is created");
         }
 
-        public Product(string name, int id, int code, decimal price)
+        public Product(string name, int id, int code, decimal price, string company="")
         {
             ProductName = name;
             ProductId = id;
             ProductCode = code;
             ProductPrice = price;
+            Company = company;
             log.Info("Product " + name + " is created");
         }
 
@@ -49,6 +54,18 @@ namespace ConsoleApplication1
         {
             return ProductName + "  " + ProductId + " " + ProductCode + " " + ProductPrice;
         }
+    static    public Product GetRandomProduct(int n)
+        {
+            Random rnd = new Random(n);
+            Product newProduct = new Product();
+            newProduct.ProductName = "Product#" + rnd.Next(100, 1000);
+            newProduct.ProductCode = rnd.Next(100000, 999999);
+            newProduct.ProductPrice = (decimal)(rnd.Next(2000, 100000))/100;
+            newProduct.Company = "Company#" + rnd.Next(100, 1000);
+            return newProduct;
+
+        }
+
     }
 }
 

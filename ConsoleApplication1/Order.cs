@@ -12,5 +12,6 @@ namespace ConsoleApplication1
         public int ClientID { get; set; }
         public DateTime DateCreated { get; set; }
         public String Status { get; set; }
+        public ICollection<OrderDetails> ListOrderDetails { get; set; }
     }
 }

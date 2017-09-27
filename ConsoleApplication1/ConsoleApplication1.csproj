@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201709261600218_AddOrdersKey.Designer.cs">
       <DependentUpon>201709261600218_AddOrdersKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709270917294_FKOrderClientProductAdd.cs" />
+    <Compile Include="Migrations\201709270917294_FKOrderClientProductAdd.Designer.cs">
+      <DependentUpon>201709270917294_FKOrderClientProductAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709261600218_AddOrdersKey.resx">
       <DependentUpon>201709261600218_AddOrdersKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709270917294_FKOrderClientProductAdd.resx">
+      <DependentUpon>201709270917294_FKOrderClientProductAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

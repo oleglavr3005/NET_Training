@@ -38,5 +38,14 @@ namespace ConsoleApplication1
                 ctx.SaveChanges();
             }
         }
+
+        public void DeleteOrders()
+        {
+           
+            using (var ctx = new ProductsContext())
+            {
+               
+            }
+        }
     }
 }
