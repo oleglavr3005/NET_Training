@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AggregatedCalculations.cs" />
+    <Compile Include="Logic\AggregatedCalculations.cs" />
     <Compile Include="DTO\ClientDTO.cs" />
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
@@ -75,7 +75,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Logic\" />
     <Folder Include="Mapping\" />
   </ItemGroup>
   <ItemGroup>

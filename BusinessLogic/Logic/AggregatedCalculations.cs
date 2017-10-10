@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace BusinessLogic
 {
-    class AggregatedCalculations
+    public class AggregatedCalculations
     {
         private ProductsContext ctx;
         private log4net.ILog logger;
