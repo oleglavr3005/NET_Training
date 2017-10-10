@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SimpleInjector;
+using log4net.Core;
+using log4net.Repository.Hierarchy;
+using log4net;
+using ConsoleApplication1;
+using System.Data.Entity;
 
 namespace BusinessLogic
 {
@@ -13,18 +18,23 @@ namespace BusinessLogic
             static Program()
         {
             container = new Container();
-
             // 2. Configure the container (register)
-            container.Register<IOrderRepository, SqlOrderRepository>();
-            container.Register<ILogger, FileLogger>(Lifestyle.Singleton);
-            container.Register<CancelOrderHandler>();
-
+            container.Register<DbContext, ProdContext>();
+            //      container.Register<ILog>(LogManager.GetLogger(typeof(Program)));
+            try
+            {
+                container.Register<ILog, LogImpl>(Lifestyle.Singleton);
+                container.Register<AggregatedCalculations, AggregatedCalculations>(Lifestyle.Singleton);
+            }
+            catch (Exception e)
+            { Console.WriteLine(e.InnerException);Console.ReadKey(); }
             // 3. Verify your configuration
-            container.Verify();
+        //    container.Verify();
         }
         static void Main(string[] args)
         {
-
+            var handler = container.GetInstance<AggregatedCalculations>();
+            handler.ToString();
         }
     }
 }

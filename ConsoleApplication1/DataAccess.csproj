@@ -96,7 +96,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
-    <Compile Include="ProductContext.cs" />
+    <Compile Include="ProductsContext.cs" />
     <Compile Include="EqualityComparer.cs" />
     <Compile Include="ProductsController.cs" />
     <Compile Include="UseForEqualityCheck.cs" />

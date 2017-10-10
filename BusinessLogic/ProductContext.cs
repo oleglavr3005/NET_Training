@@ -5,9 +5,9 @@ using System.Data.Entity;
 
 namespace ConsoleApplication1
 {
-    class ProductsContext : DbContext
+    class ProdContext : DbContext
     {
-        public ProductsContext() : base()
+        public ProdContext() : base()
         {
 
         }

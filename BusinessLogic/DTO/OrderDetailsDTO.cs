@@ -8,6 +8,9 @@ namespace BusinessLogic.DTO
 {
     class OrderDetailsDTO
     {
-
+        public int ID { get; set; }
+        public int OrderID { get; set; }
+        public int ProductID { get; set; }
+        public decimal ProductQuantity { get; set; }
     }
 }
