@@ -48,7 +48,7 @@ namespace ConsoleApplication1
                     newDetails = new OrderDetails();
                     newDetails.OrderID = order.ID;
                     newDetails.ProductID = listOfProducts[i].ProductId;
-                    newDetails.ProductQuantity = 10 + i+order.ID;
+                    newDetails.ProductQuantity = 10 + i + order.ID ;
                     ctx.OrderDetails.Add(newDetails);
                 }
             }

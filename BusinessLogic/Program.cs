@@ -38,6 +38,7 @@ namespace BusinessLogic
            decimal? res = handler.GetTotalCost(12);
             Console.WriteLine(res);
             handler.GetRecentOrders(4);
+            handler.GetTotalCostByClients();
             Console.ReadKey();
         }
     }
