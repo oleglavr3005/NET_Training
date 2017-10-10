@@ -12,12 +12,12 @@ namespace BusinessLogic
 {
     class AggregatedCalculations
     {
-        private ProdContext ctx;
+        private ProductsContext ctx;
         private log4net.ILog logger;
 
         public AggregatedCalculations()
         {
-            ctx = new ProdContext();
+            ctx = new ProductsContext();
             logger= LogManager.GetLogger(typeof(Program));
         }
 
@@ -29,12 +29,11 @@ namespace BusinessLogic
 
         public override string ToString()
         {
-            Console.WriteLine("haha");
-            Console.ReadLine();
+            Console.WriteLine("haha");           
             return base.ToString();
         }
 
-        public decimal GetTotalCost(int orderId)
+        public decimal? GetTotalCost(int orderId)
         {
             var JoinedCollection =
             from od in ctx.OrderDetails
@@ -45,5 +44,14 @@ namespace BusinessLogic
             return JoinedCollection.Sum(s => s.OrderDetailAmount);
         }
 
+        public void GetRecentOrders (int clientId)
+        {
+            IQueryable <int> orders = from od in ctx.Orders  where od.ClientID == clientId orderby od.ID select od.ID;
+            orders = orders.Take(10);
+            foreach (int o in orders)
+            {
+                Console.WriteLine("id="+o+"  cost="+GetTotalCost(o));
+            }
+        }
     }
 }

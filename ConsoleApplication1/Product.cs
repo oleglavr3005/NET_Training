@@ -5,18 +5,18 @@ using System.Collections.Generic;
 namespace ConsoleApplication1
 {
     [UseForEqualityCheck("productName", "productId")]
-    class Product : ICloneable, IComparable
+    public class Product : ICloneable, IComparable
     {
         public static readonly ILog log = LogManager.GetLogger(typeof(Product));
         private string productName;
         private int productId;
         private int productCode;
-        private decimal productPrice;
+        private decimal? productPrice;
         public string Company { get; set; }
         public string ProductName { get { return productName; } set { productName = value; }  }
         public int ProductId { get { return productId; } set { productId = value; } }
         public int ProductCode { get { return productCode; } set { productCode = value; } }
-        public decimal ProductPrice { get { return productPrice; } set { if (value > 0) productPrice = value;
+        public decimal? ProductPrice { get { return productPrice; } set { if (value > 0) productPrice = value;
                 else log.Warn("Incorrect price"); } }
 
         public ICollection<OrderDetails> ListOrderDetails { get; set; }

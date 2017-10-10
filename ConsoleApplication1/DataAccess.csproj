@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201709270917294_FKOrderClientProductAdd.Designer.cs">
       <DependentUpon>201709270917294_FKOrderClientProductAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710100952343_fdjdj.cs" />
+    <Compile Include="Migrations\201710100952343_fdjdj.Designer.cs">
+      <DependentUpon>201710100952343_fdjdj.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709270917294_FKOrderClientProductAdd.resx">
       <DependentUpon>201709270917294_FKOrderClientProductAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710100952343_fdjdj.resx">
+      <DependentUpon>201710100952343_fdjdj.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ namespace BusinessLogic.DTO
     {
         public string Company { get; set; }
         public string ProductName { get; set; }
-        public int ProductId { get; set; }
+        public int ProductID { get; set; }
         public int ProductCode { get; set; }
         public decimal ProductPrice
 

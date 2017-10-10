@@ -19,7 +19,7 @@ namespace BusinessLogic
         {
             container = new Container();
             // 2. Configure the container (register)
-            container.Register<DbContext, ProdContext>();
+            container.Register<DbContext, ProductsContext>();
             //      container.Register<ILog>(LogManager.GetLogger(typeof(Program)));
             try
             {
@@ -27,7 +27,7 @@ namespace BusinessLogic
                 container.Register<AggregatedCalculations, AggregatedCalculations>(Lifestyle.Singleton);
             }
             catch (Exception e)
-            { Console.WriteLine(e.InnerException);Console.ReadKey(); }
+            { Console.WriteLine(e.InnerException); }
             // 3. Verify your configuration
         //    container.Verify();
         }
@@ -35,6 +35,10 @@ namespace BusinessLogic
         {
             var handler = container.GetInstance<AggregatedCalculations>();
             handler.ToString();
+           decimal? res = handler.GetTotalCost(12);
+            Console.WriteLine(res);
+            handler.GetRecentOrders(4);
+            Console.ReadKey();
         }
     }
 }

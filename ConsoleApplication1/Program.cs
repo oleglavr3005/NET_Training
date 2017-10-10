@@ -48,7 +48,7 @@ namespace ConsoleApplication1
                     newDetails = new OrderDetails();
                     newDetails.OrderID = order.ID;
                     newDetails.ProductID = listOfProducts[i].ProductId;
-                    newDetails.ProductQuantity = 10 + i;
+                    newDetails.ProductQuantity = 10 + i+order.ID;
                     ctx.OrderDetails.Add(newDetails);
                 }
             }
@@ -131,6 +131,7 @@ namespace ConsoleApplication1
                         "dbo.OrderDetails";
 
                     try
+
                     {
                         // Write from the source to the destination.
                         bulkCopy.WriteToServer(newOrdersDetails);
@@ -172,17 +173,20 @@ namespace ConsoleApplication1
             products.Sort();
             using (var ctx = new ProductsContext())
             {
-                /*  foreach (Product prod in products)
+                 foreach (Product prod in products)
                   {
                       Console.WriteLine(prod);
                       ctx.Products.Add(prod);
                   }
 
                   for (int i=0; i<10;i++)
+
                   {
                       ctx.Clients.Add(Client.GetRandomClient(i));
                   }
-                 
+                InsertOrdersInDB(100, ctx);
+
+
                 ctx.Configuration.AutoDetectChangesEnabled = true;
               ctx.Database.ExecuteSqlCommand("delete  from dbo.OrderDetails");
                 Stopwatch stopWatch = new Stopwatch();
@@ -209,8 +213,8 @@ namespace ConsoleApplication1
                     ts.Milliseconds / 10);
                 Console.WriteLine("RunTime " + elapsedTime);
                 ctx.Configuration.AutoDetectChangesEnabled = true;
-                */
-                ctx.Database.ExecuteSqlCommand("delete  from dbo.OrderDetails");
+               
+           //     ctx.Database.ExecuteSqlCommand("delete  from dbo.OrderDetails");
                 ctx.SaveChanges();
                 List<Order> allOrders = ctx.Orders.ToList<Order>();
                 InsertOrdersDetailsSQLBulk(ctx.Database.Connection.ConnectionString,allOrders);
