@@ -24,8 +24,8 @@ namespace WebApplication1
             //      container.Register<IUserRepository, SqlUserRepository>(Lifestyle.Scoped);
 
             // This is an extension method from the integration package.
-            SimpleInjectorService.Register(container);
-            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            SimpleInjectorService.RegisterServices(container);
+       //     container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
 
             container.Verify();
 

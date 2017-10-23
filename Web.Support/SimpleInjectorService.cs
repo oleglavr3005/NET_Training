@@ -13,6 +13,7 @@ namespace Web.Support
 {
     public static class SimpleInjectorService
     {
+        public static ProductsContext dbctx;
         public static void RegisterServices(this Container container)
         {
             container.RegisterSingleton<ILog>(() =>
@@ -21,6 +22,8 @@ namespace Web.Support
             container.RegisterSingleton<DbContext, ProductsContext>();
             container.Register<AggregatedCalculations>();
             container.Register<Client>();
+    //     dbctx = container.GetInstance<ProductsContext>();
+          
 
         }
     }

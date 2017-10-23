@@ -186,7 +186,7 @@ namespace ConsoleApplication1
                   }
                 InsertOrdersInDB(100, ctx);
 
-
+               Console.WriteLine(ctx.Database.Connection.ConnectionString);
                 ctx.Configuration.AutoDetectChangesEnabled = true;
               ctx.Database.ExecuteSqlCommand("delete  from dbo.OrderDetails");
                 Stopwatch stopWatch = new Stopwatch();

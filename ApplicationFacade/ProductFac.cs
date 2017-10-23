@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationFacade
 {
-    public class Class1
+    class ProductFac
     {
     }
 }

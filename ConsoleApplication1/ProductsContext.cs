@@ -19,5 +19,7 @@ namespace ConsoleApplication1
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<OrderDetails> OrderDetails { get; set; }
+
+        public System.Data.Entity.DbSet<WebApplication1.Models.ClientModel> ClientModels { get; set; }
     }
 }
