@@ -112,7 +112,11 @@ namespace WebApplication1.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             ClientModel clientModel = Mapper.Map < Client, ClientModel> (db.Clients.Find(id));
-            db.Clients.Remove(Mapper.Map < ClientModel ,Client > (clientModel));
+            if (clientModel == null)
+            {
+                return HttpNotFound();
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

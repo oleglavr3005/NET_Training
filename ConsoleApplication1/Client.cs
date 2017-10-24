@@ -10,6 +10,13 @@ namespace ConsoleApplication1
     {
         public int ID { get; set; }
         public string Name { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public Client()
+        {
+            IsDeleted = false;
+        }
         public ICollection<Order> Orders { get; set; }
 
         static public Client GetRandomClient(int n)

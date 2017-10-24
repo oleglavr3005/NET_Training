@@ -97,6 +97,10 @@
     <Compile Include="Migrations\201710100952343_fdjdj.Designer.cs">
       <DependentUpon>201710100952343_fdjdj.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710231549444_isdelete.cs" />
+    <Compile Include="Migrations\201710231549444_isdelete.Designer.cs">
+      <DependentUpon>201710231549444_isdelete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
@@ -142,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710100952343_fdjdj.resx">
       <DependentUpon>201710100952343_fdjdj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710231549444_isdelete.resx">
+      <DependentUpon>201710231549444_isdelete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
