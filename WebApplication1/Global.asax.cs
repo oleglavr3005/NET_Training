@@ -6,6 +6,7 @@ using SimpleInjector.Integration.Web.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Web;
@@ -25,9 +26,13 @@ namespace WebApplication1
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
+          
             GlobalConfiguration.Configure(config =>
             {
                 config.MapHttpAttributeRoutes();
+                config.Services.Replace(typeof(IContentNegotiator),
+                    new DefaultContentNegotiator(true));
+                config.Formatters.JsonFormatter.Indent = true;
                 config.Formatters.JsonFormatter.SupportedMediaTypes
                      .Add(new MediaTypeHeaderValue("text/html"));
                 config.Routes.MapHttpRoute(
@@ -35,6 +40,7 @@ namespace WebApplication1
                     routeTemplate: "api/{controller}/{id}",
                     defaults: new { id = RouteParameter.Optional }
                 );
+               
             });
            
             // Register your types, for instance:

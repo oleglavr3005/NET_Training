@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Routing;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -27,9 +28,13 @@ namespace WebApplication1.Controllers
         }
 
         // GET: api/Clients/5
-        public string Get(int id)
+        public HttpResponseMessage Get(int id)
         {
-            return "value";
+            ClientModel cl;
+            cl=Mapper.Map<Client, ClientModel>(db.Clients.ToList().Find(c=>c.ID==id));
+            if (cl==null) return Request.CreateResponse(HttpStatusCode.BadRequest);
+            var result= new { ID = cl.ID,Name=cl.Name, Order= "<a href =" + "/api/clients/"+id+"/orders"+ ">"+Url.Request.RequestUri.GetLeftPart(UriPartial.Authority) + "/api/clients /"+id+"/orders</a>" };
+            return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
         // POST: api/Clients
