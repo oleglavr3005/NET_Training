@@ -70,6 +70,7 @@
     <Compile Include="DTO\OrderDetailsDTO.cs" />
     <Compile Include="DTO\OrderDTO.cs" />
     <Compile Include="DTO\ProductDTO.cs" />
+    <Compile Include="Logic\ClientValidation.cs" />
     <Compile Include="ProductContext.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

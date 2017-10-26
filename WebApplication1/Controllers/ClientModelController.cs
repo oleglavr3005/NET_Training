@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using ConsoleApplication1;
 using WebApplication1.Models;
 using AutoMapper;
+using BusinessLogic.Logic;
 
 namespace WebApplication1.Controllers
 {
@@ -19,7 +20,14 @@ namespace WebApplication1.Controllers
         // GET: ClientModel
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            IList<ClientModel> clients = new List<ClientModel>();
+            Mapper.Initialize(r => r.CreateMap<Client, ClientModel>());
+            foreach (Client c in db.Clients.ToList())
+            {
+                if (!c.IsDeleted)
+                clients.Add(Mapper.Map<Client, ClientModel>(c));
+            }
+            return View(clients);
         }
 
         // GET: ClientModel/Details/5
@@ -52,9 +60,18 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(Mapper.Map <ClientModel, Client> (clientModel));
-                db.SaveChanges();
-                return RedirectToAction("Index");
+          
+                Mapper.Initialize(r => r.CreateMap<ClientModel,Client>());
+                Client client = Mapper.Map<ClientModel, Client>(clientModel);
+                ClientValidation valid = new ClientValidation();
+              if ( ! valid.IsValidate(client))
+                {
+                    ViewBag.Message = valid.ErrorMessage;
+                    return View();
+                }
+                ViewBag.Message = valid.SuccessMessage;
+                db.Clients.Add(client);
+                db.SaveChanges();  
             }
 
             return View(clientModel);
@@ -116,7 +133,8 @@ namespace WebApplication1.Controllers
             {
                 return HttpNotFound();
             }
-
+            clientModel.IsDeleted = true;
+            db.Clients.Find(id).IsDeleted = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
