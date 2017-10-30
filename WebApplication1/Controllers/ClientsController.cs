@@ -30,9 +30,10 @@ namespace WebApplication1.Controllers
         // GET: api/Clients/5
         public HttpResponseMessage Get(int id)
         {
+            Client client = db.Clients.ToList().Find(c => c.ID == id);
             ClientModel cl;
-            cl=Mapper.Map<Client, ClientModel>(db.Clients.ToList().Find(c=>c.ID==id));
-            if (cl==null) return Request.CreateResponse(HttpStatusCode.BadRequest);
+            if (client == null) return Request.CreateResponse(HttpStatusCode.NotFound);
+            cl =Mapper.Map<Client, ClientModel>(client);
             var result= new { ID = cl.ID,Name=cl.Name, Order= "<a href =" + "/api/clients/"+id+"/orders"+ ">"+Url.Request.RequestUri.GetLeftPart(UriPartial.Authority) + "/api/clients /"+id+"/orders</a>" };
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
@@ -46,7 +47,17 @@ namespace WebApplication1.Controllers
         public void Put(int id, [FromBody]string value)
         {
         }
+        [Route("api/clients/{id}/orders")]
+        [HttpGet]
+        public HttpResponseMessage GetOrders(int id)
+        {
+            Client client = db.Clients.ToList().Find(c => c.ID == id);
+            IQueryable<Order> orders = (from od in db.Orders where od.ClientID == id orderby od.ID select od)
+               .Select(o => o);
+            ClientModel cl;
 
+            return Request.CreateResponse(HttpStatusCode.OK, orders);
+        }
         // DELETE: api/Clients/5
         public void Delete(int id)
         {
