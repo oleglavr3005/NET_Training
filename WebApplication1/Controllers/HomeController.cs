@@ -27,7 +27,8 @@ namespace WebApplication1.Controllers
                       Mapper.Map<Client,ClientModel>(client);
                     clients.Add(clientModel);
                 }
-            return View(clients);
+     //       return View(clients);
+            return View("../ClientModel/ManageClients");
         }
 
         public ActionResult About()

@@ -1,6 +1,7 @@
 ﻿var model = {
-    view: ko.observable("welcome"),
+    view: ko.observable(""),
     rsvp: {
+        Id: ko.observable(""),
         clientId: ko.observable(""),
         email: "",
         DateCreated: ko.observable("")
@@ -11,10 +12,11 @@ var showForm = function () {
     model.view("form");
 }
 var sendRsvp= function () {
-    $.ajax("/api/rsvp", {
+    $.ajax("/Home/Index", {
         type: "POST",
         data: {
-            name: model.rsvp.clientId(),
+            Id: model.rsvp.Id(),
+            clientId: model.rsvp.clientId(),
             email: model.rsvp.email,
             DateCreated: model.rsvp.DateCreated()
         },
@@ -24,7 +26,7 @@ var sendRsvp= function () {
     });
 }
 var getAttendees = function () {
-    $.ajax("/api/rsvp", {
+    $.ajax("/Home/Index", {
         type: "GET",
         success: function (data) {
             model.attendees.removeAll();

@@ -256,6 +256,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -273,6 +274,7 @@
     <Content Include="Scripts\Orders.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\test.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -313,6 +315,7 @@
     <Content Include="Views\ClientModel\Details.cshtml" />
     <Content Include="Views\ClientModel\Edit.cshtml" />
     <Content Include="Views\ClientModel\Index.cshtml" />
+    <Content Include="Views\ClientModel\ManageClients.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
